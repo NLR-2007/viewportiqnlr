@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft, ShieldCheck, Lock, Server, Mail, CreditCard, Cpu } from 'lucide-react';
 
-// TODO: replace with the real support / privacy contact before submitting to the Chrome Web Store.
-export const PRIVACY_CONTACT_EMAIL = 'support@example.com';
+export const PRIVACY_CONTACT_EMAIL = 'support.kisaankrushi@gmail.com';
 export const PRIVACY_LAST_UPDATED = 'September 17, 2026';
 
 interface PrivacyStatementProps {
