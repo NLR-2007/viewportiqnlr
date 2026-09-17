@@ -116,6 +116,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
             <span>05 • Privacy Statement</span>
             <ChevronRight className="w-4 h-4 text-black" />
           </a>
+          <a href="#/support" onClick={() => setMobileMenuOpen(false)} className="text-black font-bold py-2 border-b border-slate-100 flex items-center justify-between">
+            <span>06 • Support</span>
+            <ChevronRight className="w-4 h-4 text-black" />
+          </a>
           <button
             onClick={() => {
               setMobileMenuOpen(false);
@@ -123,7 +127,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenModal }) => {
             }}
             className="text-black font-bold py-2 border-b border-slate-100 flex items-center justify-between text-left"
           >
-            <span>06 • Chrome Extension</span>
+            <span>07 • Chrome Extension</span>
             <span className="px-2 py-0.5 rounded bg-slate-200 text-[10px] text-slate-800 font-bold">Launching Soon</span>
           </button>
 

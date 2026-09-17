@@ -9,11 +9,17 @@ import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
 import { LaunchingSoonModal } from './components/LaunchingSoonModal';
 import { PrivacyStatement } from './pages/PrivacyStatement';
+import { SupportPage } from './pages/SupportPage';
 
 // Hash routes look like "#/privacy". Plain anchors ("#features") stay on the home page.
-type Route = 'home' | 'privacy';
+type Route = 'home' | 'privacy' | 'support';
 
-const routeFromHash = (): Route => (window.location.hash.startsWith('#/privacy') ? 'privacy' : 'home');
+const routeFromHash = (): Route => {
+  const { hash } = window.location;
+  if (hash.startsWith('#/privacy')) return 'privacy';
+  if (hash.startsWith('#/support')) return 'support';
+  return 'home';
+};
 
 export const App: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -41,6 +47,8 @@ export const App: React.FC = () => {
       <main className="bg-white">
         {route === 'privacy' ? (
           <PrivacyStatement onOpenModal={openModal} />
+        ) : route === 'support' ? (
+          <SupportPage onOpenModal={openModal} />
         ) : (
           <>
             <HeroSection onOpenModal={openModal} />

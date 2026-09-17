@@ -1,5 +1,5 @@
 import React from 'react';
-import { Clock, CreditCard, ShieldCheck } from 'lucide-react';
+import { Clock, CreditCard, ShieldCheck, LifeBuoy } from 'lucide-react';
 
 interface FooterProps {
   onOpenModal: () => void;
@@ -68,6 +68,10 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
               <CreditCard className="w-3 h-3 text-slate-400" />
               <span>Pricing (Paid Soon)</span>
             </a>
+            <a href="#/support" className="text-slate-600 hover:text-black transition-colors flex items-center gap-1.5 py-1.5 min-h-[32px]">
+              <LifeBuoy className="w-3 h-3 text-slate-400" />
+              <span>Support Center</span>
+            </a>
             <button
               onClick={onOpenModal}
               className="text-slate-600 hover:text-black transition-colors flex items-center gap-1.5 text-left py-1.5 min-h-[32px]"
@@ -97,6 +101,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenModal }) => {
           <div className="flex gap-4 sm:gap-6 font-bold flex-wrap">
             <a href="#" className="hover:text-black transition-colors py-2 px-1 inline-flex items-center min-h-[32px]">TERMS</a>
             <a href="#/privacy" className="hover:text-black transition-colors py-2 px-1 inline-flex items-center min-h-[32px]">PRIVACY</a>
+            <a href="#/support" className="hover:text-black transition-colors py-2 px-1 inline-flex items-center min-h-[32px]">SUPPORT</a>
             <a href="#" className="hover:text-black transition-colors py-2 px-1 inline-flex items-center min-h-[32px]">RELEASE REPORT</a>
           </div>
         </div>
