@@ -5,24 +5,36 @@ export const SUPPORT_EMAIL = PRIVACY_CONTACT_EMAIL;
 
 const faqs = [
   {
+    q: 'Is ViewPortIQ free?',
+    a: 'Yes. Every feature is free, with no account, no card and no usage limit. We may add an optional paid tier in future once the free product has proved itself, but it would be announced on this website first and nothing is ever charged automatically.',
+  },
+  {
     q: 'Is ViewPortIQ available on the Chrome Web Store yet?',
     a: 'Not yet. We are finishing the Chrome Web Store release. The install link will be published on this website when it is live.',
   },
   {
-    q: 'Is ViewPortIQ free?',
-    a: 'It is free during early access. It will become a paid product soon. Pricing will be published on this website before any charge is introduced. Nothing is billed automatically.',
+    q: 'Does ViewPortIQ upload my pages or screenshots anywhere?',
+    a: 'No. Everything runs inside your browser. No page content, DOM data, CSS or screenshots leave your machine, and the extension loads no remote code. See the privacy statement for details.',
   },
   {
     q: 'Why does the extension ask for the "debugger" permission?',
-    a: 'ViewPortIQ uses the Chrome DevTools Protocol to emulate screen sizes and inspect layout in the tab you are auditing. Chrome only exposes that protocol to extensions through the debugger permission. It is used only for auditing the active tab, never for tracking.',
+    a: 'ViewPortIQ uses the Chrome DevTools Protocol to emulate exact screen sizes, capture device previews and run its own measurement script. Chrome only exposes that protocol to extensions through the debugger permission. It is attached only to the device tabs ViewPortIQ opens itself — never to the tab you are browsing in — and it is detached when you close the device or the lab.',
   },
   {
-    q: 'Does ViewPortIQ upload my pages or screenshots anywhere?',
-    a: 'No. Everything runs inside your browser. No page content, DOM data, CSS or screenshots leave your machine. See the privacy statement for details.',
+    q: 'Why does Chrome say the browser is being debugged?',
+    a: 'That notice is shown by Chrome itself whenever any extension uses the debugger permission, which ViewPortIQ needs to emulate devices. It appears on the ViewPortIQ device windows while a lab is open and disappears as soon as you close it. It does not mean anything is being recorded.',
+  },
+  {
+    q: 'Does it change my website?',
+    a: 'No. ViewPortIQ opens its own tabs and measures the page there. When you try a suggested CSS fix, it is applied temporarily in those tabs, re-measured and then rolled back — your site and your code are never modified. Copying the fix into your project is up to you.',
+  },
+  {
+    q: 'What does it store on my computer?',
+    a: 'A capped history of recent scans per address, the issues you chose to ignore, your saved breakpoints and your preferences. These hold measurements and CSS selectors, never form values, passwords or tokens. Clear them from the extension, or remove everything by uninstalling it.',
   },
   {
     q: 'Which browsers are supported?',
-    a: 'Google Chrome (Manifest V3). Other Chromium-based browsers that support the debugger API may work but are not officially supported yet.',
+    a: 'Google Chrome 116 or newer (Manifest V3). Other Chromium-based browsers that support the debugger API may work but are not officially supported yet.',
   },
 ];
 
@@ -57,8 +69,8 @@ export const SupportPage: React.FC = () => {
       <h2 className="text-xl mb-2">Contact</h2>
       <ul className="list-disc pl-5 mb-8 space-y-1">
         <li>
-          Email: <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> — general questions, pricing
-          enquiries, data deletion requests.
+          Email: <a className="wrap-anywhere" href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> — questions, feedback and
+          privacy enquiries.
         </li>
         <li>
           <a href={`mailto:${SUPPORT_EMAIL}?subject=${bugSubject}&body=${bugBody}`}>Report a bug</a> —
@@ -77,7 +89,7 @@ export const SupportPage: React.FC = () => {
       </dl>
 
       <p>
-        See also the <a href="#/privacy">privacy statement</a> and <a href="#pricing">pricing</a>.
+        See also the <a href="#/privacy">privacy statement</a>.
       </p>
     </article>
   );

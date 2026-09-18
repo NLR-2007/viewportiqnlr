@@ -11,7 +11,7 @@ const steps = [
   },
   {
     title: 'Measure twice',
-    description: 'A second pass filters out things that move on their own — animations, off-canvas drawers, carousels — so you do not get false positives.',
+    description: 'Every device is measured a second time, and layout that is there by design is filtered out, so you do not get false positives.',
   },
   {
     title: 'Score the page',

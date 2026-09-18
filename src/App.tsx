@@ -39,7 +39,7 @@ export const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="max-w-[1400px] mx-auto px-6 lg:px-10 py-6">
+    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-10 py-6">
       <Header />
       <main>
         {route === 'privacy' ? (

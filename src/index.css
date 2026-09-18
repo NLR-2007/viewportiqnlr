@@ -6,7 +6,7 @@
 @layer base {
   html {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    font-size: 17px;
+    font-size: 16px;
     color: #1a1a1a;
     background: #fff;
     line-height: 1.65;
@@ -14,6 +14,12 @@
 
   body {
     margin: 0;
+  }
+
+  @media (min-width: 640px) {
+    html {
+      font-size: 17px;
+    }
   }
 
   a {
@@ -130,6 +136,18 @@
   border-radius: 3px;
 }
 
+/* Long unbreakable strings (email addresses, URLs) must never widen the page. */
+.wrap-anywhere {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Tables stay readable on a phone by scrolling inside their own box. */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Section rhythm */
 .section {
   padding-top: 2.5rem;
@@ -138,8 +156,14 @@
 }
 
 .section-title {
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   margin-bottom: 0.4rem;
+}
+
+@media (min-width: 640px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
 }
 
 .section-lead {

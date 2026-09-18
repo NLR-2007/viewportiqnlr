@@ -4,12 +4,12 @@ const rows = [
   {
     task: 'Testing several screen sizes',
     manual: 'Resize the DevTools window one size at a time.',
-    viewportiq: 'Check 12 or more viewports at the same time.',
+    viewportiq: 'Nine built-in devices plus your own breakpoints, checked in one run.',
   },
   {
     task: 'Finding overflow and small touch targets',
     manual: 'Look by eye; easy to miss a 2px scrollbar or a tiny button.',
-    viewportiq: 'Ten automated rules with 2px accuracy across the whole page.',
+    viewportiq: 'Ten automated rules, measured to a 2px tolerance across the whole page.',
   },
   {
     task: 'Checking a fix',
@@ -18,7 +18,7 @@ const rows = [
   },
   {
     task: 'Privacy',
-    manual: 'Some tools upload your pages to a cloud service.',
+    manual: 'Online testing services usually render your page on their servers.',
     viewportiq: 'Runs entirely in your browser. No uploads, no telemetry.',
   },
 ];
@@ -29,8 +29,8 @@ export const SpecComparison: React.FC = () => {
       <h2 className="section-title">Compared with doing it by hand</h2>
       <p className="section-lead">What changes when you use the extension.</p>
 
-      <div className="overflow-x-auto">
-        <table className="text-sm">
+      <div className="table-scroll">
+        <table className="text-sm min-w-[34rem]">
           <thead>
             <tr>
               <th>Task</th>
