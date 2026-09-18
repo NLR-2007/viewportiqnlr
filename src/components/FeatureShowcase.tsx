@@ -52,14 +52,14 @@ const features = [
 
 export const FeatureShowcase: React.FC = () => {
   return (
-    <section id="features" className="mb-12 border-t border-gray-300 pt-8">
-      <h2 className="text-2xl mb-2">Features</h2>
-      <p className="mb-6 text-gray-700">The five parts of the extension, in the order they run.</p>
+    <section id="features" className="section">
+      <h2 className="section-title">Features</h2>
+      <p className="section-lead">The five parts of the extension, in the order they run.</p>
 
-      <ol className="list-decimal pl-5 space-y-6">
+      <ol className="list-decimal pl-5 space-y-7">
         {features.map((f) => (
           <li key={f.title}>
-            <h3 className="text-lg mb-1">{f.title}</h3>
+            <h3 className="text-lg mb-1.5">{f.title}</h3>
             <p className="mb-2">{f.description}</p>
             <ul className="list-disc pl-5 text-gray-700">
               {f.details.map((d) => (

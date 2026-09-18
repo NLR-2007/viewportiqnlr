@@ -2,21 +2,43 @@ import React from 'react';
 
 export const PricingPrivacySection: React.FC = () => {
   return (
-    <section id="pricing" className="mb-12 border-t border-gray-300 pt-8">
-      <h2 className="text-2xl mb-4">Pricing</h2>
+    <section id="pricing" className="section">
+      <h2 className="section-title">Pricing</h2>
+      <p className="section-lead">What it costs now, and what will change.</p>
 
       <p className="notice mb-4">
         <strong>ViewPortIQ is free during early access and will become a paid product soon.</strong>
       </p>
 
-      <ul className="list-disc pl-5 mb-8 space-y-1">
-        <li>Free to use while we are in early access. No card required.</li>
-        <li>Once the extension is published on the Chrome Web Store it will move to paid plans.</li>
-        <li>Prices will be published on this page before they take effect.</li>
-        <li>Early-access subscribers will be emailed before any charge is introduced. Nothing is billed automatically.</li>
+      <table className="mb-4 text-[15px]">
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Price</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="font-semibold">Early access (now)</td>
+            <td>Free</td>
+            <td>No card required. Full feature set.</td>
+          </tr>
+          <tr>
+            <td className="font-semibold">After Chrome Web Store launch</td>
+            <td>Paid plans</td>
+            <td>Prices will be published here before they take effect.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul className="list-disc pl-5 mb-10 space-y-1">
+        <li>Early-access subscribers will be emailed before any charge is introduced.</li>
+        <li>Nothing is billed automatically; you will always be asked to opt in.</li>
       </ul>
 
-      <h2 id="privacy" className="text-2xl mb-4">Privacy, in short</h2>
+      <h2 id="privacy" className="section-title">Privacy, in short</h2>
+      <p className="section-lead">The full statement is linked below; this is the summary.</p>
 
       <ul className="list-disc pl-5 mb-4 space-y-1">
         <li>Your pages are analysed on your own computer. Nothing is uploaded to us or to anyone else.</li>

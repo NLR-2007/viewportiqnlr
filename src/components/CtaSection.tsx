@@ -12,16 +12,12 @@ export const CtaSection: React.FC = () => {
   };
 
   return (
-    <section id="early-access" className="mb-12 border-t border-gray-300 pt-8">
-      <h2 className="text-2xl mb-4">Get early access</h2>
-
-      <p className="mb-4">
-        The Chrome Web Store release is not out yet. Leave your email and we will send you the install
-        link when it is ready, and let you know before pricing starts.
-      </p>
+    <section id="early-access" className="section">
+      <h2 className="section-title">Get early access</h2>
+      <p className="section-lead">Be first to get the install link, and hear about pricing before it starts.</p>
 
       {submitted ? (
-        <p className="border border-gray-400 bg-gray-50 px-4 py-3">
+        <p className="panel">
           Thanks — we have added <strong>{email}</strong> to the list. We will email you when the
           extension is available.
         </p>

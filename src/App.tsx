@@ -34,11 +34,13 @@ export const App: React.FC = () => {
       }
     };
     window.addEventListener('hashchange', onHashChange);
+    // On a fresh load the browser jumps to the anchor before React has rendered, so do it again now.
+    onHashChange();
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
   return (
-    <div className="max-w-3xl mx-auto px-4 py-6">
+    <div className="max-w-4xl mx-auto px-5 py-6">
       <Header />
       <main>
         {route === 'privacy' ? (

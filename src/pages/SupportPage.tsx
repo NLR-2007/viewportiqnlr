@@ -46,7 +46,7 @@ export const SupportPage: React.FC = () => {
   );
 
   return (
-    <article className="mb-12">
+    <article className="mb-12 max-w-3xl">
       <p className="mb-6 text-sm">
         <a href="#/">← Back to home</a>
       </p>

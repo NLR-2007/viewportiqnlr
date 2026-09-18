@@ -29,9 +29,9 @@ const steps = [
 
 export const ArchitectureDeck: React.FC = () => {
   return (
-    <section id="architecture" className="mb-12 border-t border-gray-300 pt-8">
-      <h2 className="text-2xl mb-2">How it works</h2>
-      <p className="mb-6 text-gray-700">
+    <section id="architecture" className="section">
+      <h2 className="section-title">How it works</h2>
+      <p className="section-lead">
         Built for Chrome (Manifest V3). Each step is a separate module.
       </p>
 

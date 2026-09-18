@@ -25,9 +25,9 @@ const rows = [
 
 export const SpecComparison: React.FC = () => {
   return (
-    <section id="specs" className="mb-12 border-t border-gray-300 pt-8">
-      <h2 className="text-2xl mb-2">Compared with doing it by hand</h2>
-      <p className="mb-6 text-gray-700">What changes when you use the extension.</p>
+    <section id="specs" className="section">
+      <h2 className="section-title">Compared with doing it by hand</h2>
+      <p className="section-lead">What changes when you use the extension.</p>
 
       <div className="overflow-x-auto">
         <table className="text-sm">
