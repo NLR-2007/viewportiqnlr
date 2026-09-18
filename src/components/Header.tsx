@@ -29,11 +29,6 @@ export const Header: React.FC = () => {
               </a>
             </li>
           ))}
-          <li>
-            <a href="#early-access" className="btn-outline text-sm py-1.5 px-3">
-              Get early access
-            </a>
-          </li>
         </ul>
       </nav>
     </header>

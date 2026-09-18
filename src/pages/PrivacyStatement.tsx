@@ -26,9 +26,8 @@ export const PrivacyStatement: React.FC = () => {
 
       <p className="mb-8">
         In short: your pages never leave your machine. ViewPortIQ analyses layouts locally, asks only
-        for the permissions it needs, and the only data we hold is the email you give us for early
-        access. The product is free today and will become paid soon; we will tell you before that
-        happens.
+        for the permissions it needs, and this website collects no personal data. The product is free
+        today and will become paid soon; pricing will be published here before that happens.
       </p>
 
       <h2 className="text-xl mb-2">1. Summary</h2>
@@ -39,8 +38,8 @@ export const PrivacyStatement: React.FC = () => {
         browsing history to our servers or to any third party.
       </p>
       <p className="mb-6">
-        The only personal information we collect is the email address you voluntarily submit on this
-        website to join the early-access list.
+        We do not collect personal information through the extension or this website. If you email us
+        for support, we use your message only to reply to you.
       </p>
 
       <h2 className="text-xl mb-2">2. Data the extension processes</h2>
@@ -68,20 +67,20 @@ export const PrivacyStatement: React.FC = () => {
 
       <h2 className="text-xl mb-2">4. Data collected on this website</h2>
       <p className="mb-3">
-        If you join the early-access list, we store the email address you provide so we can notify you
-        when the Chrome Web Store release is available and about pricing changes (see section 5). We do
-        not sell, rent or share this list with third parties.
+        This website has no sign-up forms, accounts, analytics or tracking cookies. It does not collect
+        or store any personal data.
       </p>
       <p className="mb-6">
-        You can ask us to delete your email at any time by contacting{' '}
+        If you contact us by email, we keep your message only for as long as needed to answer it, and
+        you can ask us to delete it at any time by writing to{' '}
         <a href={`mailto:${PRIVACY_CONTACT_EMAIL}`}>{PRIVACY_CONTACT_EMAIL}</a>.
       </p>
 
       <h2 className="text-xl mb-2">5. Free today, paid soon</h2>
       <p className="mb-3">
         <strong>ViewPortIQ is free during the early-access period. It will become a paid product soon.</strong>{' '}
-        Before any charge is introduced, we will publish pricing on this website and notify early-access
-        subscribers by email. Nothing will be billed automatically; you will always be asked to opt in.
+        Before any charge is introduced, we will publish pricing on this website. Nothing will be
+        billed automatically; you will always be asked to opt in.
       </p>
       <p className="mb-6">
         When payments launch, billing will be handled by a payment processor; we will not store your full

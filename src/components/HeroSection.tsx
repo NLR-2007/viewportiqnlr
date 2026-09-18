@@ -51,14 +51,14 @@ export const HeroSection: React.FC = () => {
 
       <p className="notice mb-6">
         <strong>Please note:</strong> ViewPortIQ is free during early access and{' '}
-        <strong>will become a paid product soon</strong>. We will publish pricing on this page and
-        email early-access subscribers before anything is charged. See{' '}
-        <a href="#pricing">pricing</a> and our <a href="#/privacy">privacy statement</a>.
+        <strong>will become a paid product soon</strong>. Pricing will be published on this page
+        before it takes effect. See <a href="#pricing">pricing</a> and our{' '}
+        <a href="#/privacy">privacy statement</a>.
       </p>
 
       <p className="flex flex-wrap items-center gap-4">
-        <a href="#early-access" className="btn">Get early access</a>
-        <a href="#features">Read about the features</a>
+        <a href="#features" className="btn">Read about the features</a>
+        <a href="#/support">Contact support</a>
       </p>
     </section>
   );

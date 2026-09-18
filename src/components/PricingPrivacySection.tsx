@@ -33,7 +33,7 @@ export const PricingPrivacySection: React.FC = () => {
       </table>
 
       <ul className="list-disc pl-5 mb-10 space-y-1">
-        <li>Early-access subscribers will be emailed before any charge is introduced.</li>
+        <li>Pricing will be announced on this page before any charge is introduced.</li>
         <li>Nothing is billed automatically; you will always be asked to opt in.</li>
       </ul>
 
@@ -43,7 +43,7 @@ export const PricingPrivacySection: React.FC = () => {
       <ul className="list-disc pl-5 mb-4 space-y-1">
         <li>Your pages are analysed on your own computer. Nothing is uploaded to us or to anyone else.</li>
         <li>The extension asks only for the <code>activeTab</code>, <code>debugger</code> and <code>storage</code> permissions.</li>
-        <li>The only personal data we keep is the email address you give us for early access, and we delete it on request.</li>
+        <li>This website collects no personal data and uses no analytics or tracking cookies.</li>
       </ul>
 
       <p>

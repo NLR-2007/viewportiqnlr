@@ -6,11 +6,11 @@ export const SUPPORT_EMAIL = PRIVACY_CONTACT_EMAIL;
 const faqs = [
   {
     q: 'Is ViewPortIQ available on the Chrome Web Store yet?',
-    a: 'Not yet. We are finishing the Chrome Web Store release. Join the early-access list on the home page and we will email you the install link when it is live.',
+    a: 'Not yet. We are finishing the Chrome Web Store release. The install link will be published on this website when it is live.',
   },
   {
     q: 'Is ViewPortIQ free?',
-    a: 'It is free during early access. It will become a paid product soon. Pricing will be published on this website and every early-access subscriber will be emailed before any charge is introduced. Nothing is billed automatically.',
+    a: 'It is free during early access. It will become a paid product soon. Pricing will be published on this website before any charge is introduced. Nothing is billed automatically.',
   },
   {
     q: 'Why does the extension ask for the "debugger" permission?',
@@ -19,10 +19,6 @@ const faqs = [
   {
     q: 'Does ViewPortIQ upload my pages or screenshots anywhere?',
     a: 'No. Everything runs inside your browser. No page content, DOM data, CSS or screenshots leave your machine. See the privacy statement for details.',
-  },
-  {
-    q: 'How do I delete my early-access email from your list?',
-    a: `Email ${PRIVACY_CONTACT_EMAIL} from the address you subscribed with and ask to be removed. We will confirm once it is deleted.`,
   },
   {
     q: 'Which browsers are supported?',

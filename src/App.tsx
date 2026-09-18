@@ -5,7 +5,6 @@ import { FeatureShowcase } from './components/FeatureShowcase';
 import { SpecComparison } from './components/SpecComparison';
 import { ArchitectureDeck } from './components/ArchitectureDeck';
 import { PricingPrivacySection } from './components/PricingPrivacySection';
-import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
 import { PrivacyStatement } from './pages/PrivacyStatement';
 import { SupportPage } from './pages/SupportPage';
@@ -54,7 +53,6 @@ export const App: React.FC = () => {
             <SpecComparison />
             <ArchitectureDeck />
             <PricingPrivacySection />
-            <CtaSection />
           </>
         )}
       </main>
