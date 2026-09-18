@@ -133,7 +133,7 @@ export const PrivacyStatement: React.FC<PrivacyStatementProps> = ({ onOpenModal 
   return (
     <section className="pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-white bg-light-grid text-left">
       <div className="max-w-3xl mx-auto">
-        <a href="#/" className="inline-flex items-center gap-2 font-mono text-xs font-bold text-slate-600 hover:text-black transition-colors mb-8 min-h-[32px]">
+        <a href="#/" className="flex w-fit items-center gap-2 font-mono text-xs font-bold text-slate-600 hover:text-black transition-colors mb-8 min-h-[32px]">
           <ArrowLeft className="w-4 h-4" />
           <span>BACK TO HOME</span>
         </a>
