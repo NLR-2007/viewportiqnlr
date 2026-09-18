@@ -17,13 +17,13 @@
   }
 
   a {
-    color: #1a4fa3;
+    color: #b3161b;
     text-decoration: underline;
     text-underline-offset: 2px;
   }
 
   a:hover {
-    color: #0d2f66;
+    color: #7a0f12;
   }
 
   h1, h2, h3 {
@@ -69,7 +69,7 @@
   }
 
   input[type="email"]:focus {
-    outline: 2px solid #1a4fa3;
+    outline: 2px solid #e52328;
     outline-offset: 1px;
   }
 
@@ -81,8 +81,8 @@
 /* Buttons */
 .btn {
   display: inline-block;
-  border: 1px solid #1a4fa3;
-  background: #1a4fa3;
+  border: 1px solid #e52328;
+  background: #e52328;
   color: #fff;
   padding: 0.5rem 1.1rem;
   border-radius: 3px;
@@ -92,16 +92,16 @@
 }
 
 .btn:hover {
-  background: #0d2f66;
-  border-color: #0d2f66;
+  background: #b3161b;
+  border-color: #b3161b;
   color: #fff;
 }
 
 .btn-outline {
   display: inline-block;
-  border: 1px solid #1a4fa3;
+  border: 1px solid #e52328;
   background: #fff;
-  color: #1a4fa3;
+  color: #e52328;
   padding: 0.5rem 1.1rem;
   border-radius: 3px;
   text-decoration: none;
@@ -110,14 +110,14 @@
 }
 
 .btn-outline:hover {
-  background: #eef3fb;
+  background: #fdecec;
 }
 
 /* Note box, like a printed notice */
 .notice {
-  border: 1px solid #e0b400;
-  border-left-width: 5px;
-  background: #fffbe6;
+  border: 1px solid #d9d9d9;
+  border-left: 5px solid #e52328;
+  background: #f7f7f7;
   padding: 0.8rem 1rem;
   border-radius: 3px;
 }
