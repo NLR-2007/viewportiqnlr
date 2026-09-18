@@ -14,7 +14,7 @@ export const HeroSection: React.FC = () => {
         that caused them, and lets you try a fix before you change your code.
       </p>
 
-      <div className="grid sm:grid-cols-[1fr_260px] gap-6 items-start mb-6">
+      <div className="grid sm:grid-cols-[1fr_300px] gap-10 items-start mb-6">
         <ul className="list-disc pl-5 space-y-1.5">
           <li>Phone, tablet and desktop viewports tested together, not one at a time.</li>
           <li>Finds horizontal overflow, clipped text and touch targets that are too small.</li>
