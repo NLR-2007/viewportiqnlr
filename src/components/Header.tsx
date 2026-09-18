@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
         <img src="/logo.png" alt="ViewPortIQ logo" className="w-11 h-11" />
         <span>
           <span className="block text-xl font-bold leading-tight">ViewPortIQ</span>
-          <span className="block text-sm text-gray-600">by NLR Group of Companies</span>
+          <span className="block text-sm text-gray-600">A Product of NLR</span>
         </span>
       </a>
 
