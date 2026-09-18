@@ -7,7 +7,6 @@ import { ArchitectureDeck } from './components/ArchitectureDeck';
 import { PricingPrivacySection } from './components/PricingPrivacySection';
 import { CtaSection } from './components/CtaSection';
 import { Footer } from './components/Footer';
-import { LaunchingSoonModal } from './components/LaunchingSoonModal';
 import { PrivacyStatement } from './pages/PrivacyStatement';
 import { SupportPage } from './pages/SupportPage';
 
@@ -22,7 +21,6 @@ const routeFromHash = (): Route => {
 };
 
 export const App: React.FC = () => {
-  const [modalOpen, setModalOpen] = useState(false);
   const [route, setRoute] = useState<Route>(routeFromHash);
 
   useEffect(() => {
@@ -39,30 +37,26 @@ export const App: React.FC = () => {
     return () => window.removeEventListener('hashchange', onHashChange);
   }, []);
 
-  const openModal = () => setModalOpen(true);
-
   return (
-    <div className="min-h-screen bg-white text-black font-geist selection:bg-black selection:text-white">
-      <Header onOpenModal={openModal} />
-      <main className="bg-white">
+    <div className="max-w-3xl mx-auto px-4 py-6">
+      <Header />
+      <main>
         {route === 'privacy' ? (
-          <PrivacyStatement onOpenModal={openModal} />
+          <PrivacyStatement />
         ) : route === 'support' ? (
-          <SupportPage onOpenModal={openModal} />
+          <SupportPage />
         ) : (
           <>
-            <HeroSection onOpenModal={openModal} />
+            <HeroSection />
             <FeatureShowcase />
             <SpecComparison />
             <ArchitectureDeck />
-            <PricingPrivacySection onOpenModal={openModal} />
-            <CtaSection onOpenModal={openModal} />
+            <PricingPrivacySection />
+            <CtaSection />
           </>
         )}
       </main>
-      <Footer onOpenModal={openModal} />
-
-      <LaunchingSoonModal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+      <Footer />
     </div>
   );
 };
