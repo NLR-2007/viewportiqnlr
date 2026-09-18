@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Northwind Outdoor — ViewPortIQ demo page</title>
+<meta name="description" content="A deliberately broken product page used to test the ViewPortIQ Chrome extension. Every layout bug on it is intentional and labelled.">
+<style>
+  /* ---------- base ---------- */
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color: #1c1c1c; background: #fff; line-height: 1.5; }
+  h1, h2, h3 { line-height: 1.2; margin: 0 0 .4em; }
+  p { margin: 0 0 1em; }
+  a { color: #0b57d0; }
+  section { padding: 24px 16px; border-bottom: 1px solid #e5e5e5; }
+  .wrap { max-width: 1100px; margin: 0 auto; }
+  .tag { display: inline-block; font: 600 11px/1 monospace; letter-spacing: .04em; padding: 5px 7px; border-radius: 3px; margin-bottom: 10px; }
+  .tag.bug { background: #fde8e8; color: #b3161b; border: 1px solid #f3b5b5; }
+  .tag.ok  { background: #e6f4ea; color: #137333; border: 1px solid #b7dfc2; }
+  .hint { font-size: 13px; color: #555; margin: 0 0 12px; }
+  .btn { display: inline-block; padding: 10px 18px; background: #0b57d0; color: #fff; border: 0; border-radius: 6px; font: inherit; font-weight: 600; text-decoration: none; cursor: pointer; }
+
+  /* ---------- OK-1: sticky header (must not be reported as overlap) ---------- */
+  .site-header { position: sticky; top: 0; z-index: 10; background: #111; color: #fff; padding: 12px 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .site-header .brand { font-weight: 700; letter-spacing: .02em; }
+
+  /* ---------- BUG-9: navigation overflow (7 links, nowrap, no wrapping/scrolling) ---------- */
+  .main-nav { display: flex; gap: 18px; white-space: nowrap; }
+  .main-nav a { color: #fff; text-decoration: none; padding: 10px 0; display: inline-block; }
+
+  /* ---------- OK-2: hero image with CTA on top (z-index on a static grid item) ---------- */
+  .hero { position: relative; display: grid; min-height: 320px; overflow: hidden; background: #234; }
+  .hero > picture { grid-area: 1 / 1; position: absolute; inset: 0; }
+  .hero > picture img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .hero > .hero-copy { grid-area: 1 / 1; z-index: 2; align-self: end; padding: 24px 16px; color: #fff; }
+  .hero-copy h1 { font-size: clamp(1.6rem, 5vw, 2.6rem); }
+
+  /* ---------- BUG-1: horizontal overflow — fixed 600px promo banner ---------- */
+  .promo-banner { width: 600px; background: #ffd54f; padding: 14px 18px; font-weight: 600; border-radius: 6px; }
+
+  /* ---------- BUG-2: fixed-width product card ---------- */
+  .product-card { width: 480px; border: 1px solid #ddd; border-radius: 8px; padding: 16px; margin-top: 16px; }
+
+  /* ---------- BUG-3: flex row that cannot wrap ---------- */
+  .feature-row { display: flex; flex-wrap: nowrap; gap: 12px; margin-top: 16px; }
+  .feature-row > div { flex: 0 0 220px; background: #f4f6f8; padding: 14px; border-radius: 6px; }
+
+  /* ---------- BUG-4: grid with fixed 3 × 200px tracks ---------- */
+  .spec-grid { display: grid; grid-template-columns: repeat(3, 200px); gap: 10px; margin-top: 16px; }
+  .spec-grid > div { background: #eef3fb; padding: 12px; border-radius: 6px; }
+
+  /* ---------- BUG-5: nowrap title cut off, no ellipsis ---------- */
+  .order-box { width: 180px; border: 1px solid #ddd; border-radius: 6px; padding: 10px; overflow: hidden; margin-top: 16px; }
+  .order-box .title { white-space: nowrap; font-weight: 600; }
+
+  /* ---------- OK-4: same width, but ellipsis / line-clamp (deliberate truncation) ---------- */
+  .order-box .ellipsis { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .order-box .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; height: 3em; }
+
+  /* ---------- BUG-6: two buttons absolutely positioned on top of each other ---------- */
+  .checkout-bar { position: relative; height: 64px; margin-top: 16px; }
+  .checkout-bar .btn { position: absolute; top: 10px; width: 150px; text-align: center; }
+  .checkout-bar .btn.a { left: 8px; }
+  .checkout-bar .btn.b { left: 100px; background: #137333; }
+
+  /* ---------- BUG-7: crowded tiny controls (16px, 4px apart) ---------- */
+  .icon-row { display: flex; gap: 4px; margin-top: 16px; }
+  .icon-row button { width: 16px; height: 16px; padding: 0; border: 1px solid #888; background: #fff; font-size: 9px; line-height: 1; }
+
+  /* ---------- OK-7: one small close button on its own (WCAG spacing exception) ---------- */
+  .note { position: relative; background: #f2f2f2; padding: 12px 40px 12px 12px; border-radius: 6px; margin-top: 16px; }
+  .note .close { position: absolute; right: 10px; top: 10px; width: 18px; height: 18px; padding: 0; border: 1px solid #999; background: #fff; border-radius: 50%; font-size: 11px; line-height: 1; }
+
+  /* ---------- BUG-8: image without max-width ---------- */
+  .gallery-img { width: 600px; height: 140px; display: block; margin-top: 16px; border-radius: 6px; }
+
+  /* ---------- OK-3: image cropped by its own frame (deliberate) ---------- */
+  .crop-frame { width: 100%; max-width: 320px; height: 160px; overflow: hidden; border-radius: 8px; margin-top: 16px; }
+  .crop-frame img { width: 520px; height: 160px; display: block; margin-left: -100px; }
+
+  /* ---------- OK-5: horizontal carousel (overflow-x: auto) ---------- */
+  .carousel { display: flex; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 8px; margin-top: 16px; }
+  .carousel > div { flex: 0 0 240px; scroll-snap-align: start; background: #f4f6f8; padding: 14px; border-radius: 6px; }
+
+  /* ---------- OK-6: footnote link in running text ---------- */
+  sup a { font-size: .8em; }
+
+  footer { padding: 24px 16px; color: #666; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<!-- OK-1 -->
+<header class="site-header">
+  <span class="brand">Northwind Outdoor</span>
+  <!-- BUG-9 -->
+  <nav class="main-nav" aria-label="Main">
+    <a href="#tents">Tents</a><a href="#packs">Backpacks</a><a href="#sleep">Sleeping bags</a><a href="#cook">Cooking</a><a href="#apparel">Apparel</a><a href="#sale">Clearance sale</a><a href="#help">Help centre</a>
+  </nav>
+</header>
+
+<!-- OK-2 -->
+<section class="hero" aria-label="Hero">
+  <picture>
+    <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1600' height='600'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%23234'/%3E%3Cstop offset='1' stop-color='%23579'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='1600' height='600' fill='url(%23g)'/%3E%3C/svg%3E">
+  </picture>
+  <div class="hero-copy">
+    <h1>Gear for the long way round.</h1>
+    <p>Tested on real trails. Free returns for 60 days.</p>
+    <a class="btn" href="#tents">Shop tents</a>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>ViewPortIQ demo page</h2>
+    <p>This page is <strong>deliberately broken</strong>. Every block below is labelled: red <span class="tag bug">BUG</span> blocks are real responsive defects the extension should report; green <span class="tag ok">OK</span> blocks are things developers do on purpose that it should <em>not</em> report. Open the ViewPortIQ side panel, add the phone screens, and compare.</p>
+  </div>
+</section>
+
+<section id="sale">
+  <div class="wrap">
+    <span class="tag bug">BUG-1 · horizontal overflow · fixed 600px banner</span>
+    <p class="hint">Expected: <em>Horizontal overflow</em> on every screen narrower than ~630px.</p>
+    <div class="promo-banner" data-demo="bug-1">Clearance sale — up to 40% off selected tents this weekend only</div>
+  </div>
+</section>
+
+<section id="tents">
+  <div class="wrap">
+    <span class="tag bug">BUG-2 · fixed-width card · width: 480px</span>
+    <p class="hint">Expected: <em>Fixed width</em> on phones; passes from ~520px up.</p>
+    <div class="product-card" data-demo="bug-2">
+      <h3>Ridgeline 2 Tent</h3>
+      <p>Two-person, three-season, 1.9 kg packed. Colour-coded poles and a full-coverage fly.</p>
+      <a class="btn" href="#tents">Add to cart — $329</a>
+    </div>
+
+    <span class="tag bug" style="margin-top:20px">BUG-3 · flex row · flex-wrap: nowrap, items 220px</span>
+    <p class="hint">Expected: <em>Flex overflow</em> on screens narrower than ~700px.</p>
+    <div class="feature-row" data-demo="bug-3">
+      <div><strong>Waterproof</strong><br>5,000 mm fly</div>
+      <div><strong>Light</strong><br>1.9 kg packed</div>
+      <div><strong>Fast pitch</strong><br>Under 4 minutes</div>
+    </div>
+
+    <span class="tag bug" style="margin-top:20px">BUG-4 · grid · repeat(3, 200px)</span>
+    <p class="hint">Expected: <em>Grid overflow</em> on screens narrower than ~650px.</p>
+    <div class="spec-grid" data-demo="bug-4">
+      <div>Capacity<br><strong>2 people</strong></div>
+      <div>Peak height<br><strong>104 cm</strong></div>
+      <div>Floor area<br><strong>2.7 m²</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="packs">
+  <div class="wrap">
+    <span class="tag bug">BUG-5 · text clipping · nowrap, no ellipsis</span>
+    <p class="hint">Expected: <em>Text clipping</em> on every screen (the box is 180px wide).</p>
+    <div class="order-box" data-demo="bug-5">
+      <div class="title">Order #48213 — Trailhead 55L Backpack, Forest Green</div>
+    </div>
+
+    <span class="tag ok" style="margin-top:20px">OK-4 · same box, but ellipsis and line-clamp (deliberate)</span>
+    <p class="hint">Expected: at most "needs review" for the ellipsis; nothing for the line-clamp.</p>
+    <div class="order-box" data-demo="ok-4">
+      <div class="ellipsis">Order #48214 — Trailhead 55L Backpack, Slate Blue</div>
+      <div class="clamp">A two-line product summary that is clamped on purpose so every card in the list stays the same height, however long the description is.</div>
+    </div>
+
+    <span class="tag bug" style="margin-top:20px">BUG-6 · overlapping controls · two absolute buttons</span>
+    <p class="hint">Expected: <em>Element overlap</em> on every screen (interactive pair, always real).</p>
+    <div class="checkout-bar" data-demo="bug-6">
+      <a class="btn a" href="#packs">Add to cart</a>
+      <a class="btn b" href="#packs">Buy now</a>
+    </div>
+
+    <span class="tag bug" style="margin-top:20px">BUG-7 · tiny touch targets · 16px, crowded</span>
+    <p class="hint">Expected: <em>Small touch target</em> on touch screens (phones and tablets), not on laptop/desktop.</p>
+    <div class="icon-row" data-demo="bug-7">
+      <button type="button" aria-label="Share">↗</button>
+      <button type="button" aria-label="Save">♡</button>
+      <button type="button" aria-label="Compare">⇄</button>
+    </div>
+
+    <span class="tag ok" style="margin-top:20px">OK-7 · one small close button with nothing near it</span>
+    <p class="hint">Expected: nothing — WCAG 2.5.8 allows an undersized target when no other target is within 24px.</p>
+    <div class="note" data-demo="ok-7">
+      Free shipping on orders over $75.
+      <button class="close" type="button" aria-label="Dismiss">×</button>
+    </div>
+  </div>
+</section>
+
+<section id="sleep">
+  <div class="wrap">
+    <span class="tag bug">BUG-8 · image overflow · 600px img, no max-width</span>
+    <p class="hint">Expected: <em>Media overflow</em> on screens narrower than ~630px.</p>
+    <img class="gallery-img" data-demo="bug-8" alt="Sleeping bag laid out on a groundsheet" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='140'%3E%3Crect width='600' height='140' fill='%236a8f5c'/%3E%3C/svg%3E">
+
+    <span class="tag ok" style="margin-top:20px">OK-3 · image cropped by its own frame (overflow: hidden)</span>
+    <p class="hint">Expected: nothing — the picture is bigger than the frame on purpose.</p>
+    <div class="crop-frame" data-demo="ok-3">
+      <img alt="" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='160'%3E%3Crect width='520' height='160' fill='%23b8860b'/%3E%3C/svg%3E">
+    </div>
+
+    <span class="tag ok" style="margin-top:20px">OK-5 · horizontal carousel (overflow-x: auto + scroll-snap)</span>
+    <p class="hint">Expected: nothing — the row scrolls sideways by design.</p>
+    <div class="carousel" data-demo="ok-5" aria-roledescription="carousel" aria-label="Related products">
+      <div><strong>Summit 0°</strong><br>Down, 890 g</div>
+      <div><strong>Meadow 10°</strong><br>Synthetic, 1.1 kg</div>
+      <div><strong>Cascade 20°</strong><br>Synthetic, 950 g</div>
+      <div><strong>Ultralight quilt</strong><br>Down, 540 g</div>
+    </div>
+
+    <span class="tag ok" style="margin-top:20px">OK-6 · footnote link inside a sentence</span>
+    <p class="hint">Expected: nothing — inline links in running text are exempt from the touch-target rule.</p>
+    <p data-demo="ok-6">All temperature ratings are ISO 23537 comfort limits.<sup><a href="#fn1" aria-label="Footnote 1">1</a></sup> Real-world warmth varies with the sleeping pad and clothing.</p>
+  </div>
+</section>
+
+<footer id="help">
+  <div class="wrap">
+    <p id="fn1"><sup>1</sup> Ratings measured by an independent laboratory in 2025.</p>
+    <p>Northwind Outdoor is a fictional shop created for the ViewPortIQ demo. Nothing here is for sale.</p>
+  </div>
+</footer>
+
+</body>
+</html>
